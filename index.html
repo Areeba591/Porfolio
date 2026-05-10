@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Areeba Sheikh — Frontend Developer & Office Automation Expert</title>
+
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- ============================================================
+       INTERNAL STYLES
+  ============================================================ -->
+  <style>
+    /* ── CSS Variables ───────────────────────────────────────── */
+    :root {
+      --purple:        #6f42c1;
+      --purple-dark:   #4e2d8a;
+      --purple-light:  #9d6fe8;
+      --purple-pale:   #ede7f6;
+      --purple-glass:  rgba(111, 66, 193, 0.12);
+      --white:         #ffffff;
+      --off-white:     #faf9ff;
+      --text-dark:     #1a1030;
+      --text-muted:    #6b6080;
+      --border:        rgba(111, 66, 193, 0.18);
+      --shadow-card:   0 8px 32px rgba(111, 66, 193, 0.13);
+      --shadow-hover:  0 16px 48px rgba(111, 66, 193, 0.22);
+      --transition:    all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ── Reset & Base ────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--off-white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── Scrollbar ───────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--purple-pale); }
+    ::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 4px; }
+
+    /* ── Selection ───────────────────────────────────────────── */
+    ::selection { background: var(--purple); color: #fff; }
+
+    /* ── Utility ─────────────────────────────────────────────── */
+    .section-pad   { padding: 96px 0; }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+    .section-title span { color: var(--purple); }
+    .divider {
+      width: 52px; height: 4px;
+      background: linear-gradient(90deg, var(--purple), var(--purple-light));
+      border-radius: 2px;
+    }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    .navbar {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+      padding: 14px 0;
+    }
+    .navbar.scrolled {
+      padding: 10px 0;
+      box-shadow: 0 4px 24px rgba(111, 66, 193, 0.1);
+    }
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--purple) !important;
+      letter-spacing: -0.02em;
+    }
+    .navbar-brand span { color: var(--text-dark); }
+    .nav-link {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--text-muted) !important;
+      padding: 6px 14px !important;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--purple) !important;
+      background: var(--purple-glass);
+    }
+    .navbar-toggler { border: 1.5px solid var(--border); }
+    .navbar-toggler:focus { box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.18); }
+
+    /* ============================================================
+       HERO SECTION
+    ============================================================ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #faf9ff 0%, #ede7f6 40%, #f3eeff 100%);
+      padding-top: 80px;
+    }
+
+    /* Decorative blobs */
+    #hero::before, #hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    #hero::before {
+      width: 520px; height: 520px;
+      background: var(--purple-light);
+      top: -120px; right: -100px;
+    }
+    #hero::after {
+      width: 360px; height: 360px;
+      background: #c8a8f8;
+      bottom: -80px; left: -80px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--purple-glass);
+      border: 1px solid var(--border);
+      color: var(--purple);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 7px 16px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      animation: fadeSlideDown 0.7s ease both;
+    }
+    .hero-badge .dot {
+      width: 7px; height: 7px;
+      background: var(--purple);
+      border-radius: 50%;
+      animation: pulse 1.8s ease infinite;
+    }
+
+    .hero-name {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--text-dark);
+      animation: fadeSlideDown 0.8s 0.1s ease both;
+    }
+    .hero-name .highlight {
+      color: var(--purple);
+      position: relative;
+      display: inline-block;
+    }
+    .hero-name .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 4px; left: 0;
+      width: 100%; height: 4px;
+      background: linear-gradient(90deg, var(--purple), var(--purple-light));
+      border-radius: 2px;
+      opacity: 0.5;
+    }
+
+    .hero-title {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 600;
+      color: var(--purple);
+      margin: 12px 0 10px;
+      animation: fadeSlideDown 0.8s 0.2s ease both;
+    }
+    .hero-tagline {
+      font-size: clamp(0.95rem, 2vw, 1.08rem);
+      color: var(--text-muted);
+      font-weight: 400;
+      max-width: 480px;
+      line-height: 1.7;
+      animation: fadeSlideDown 0.8s 0.3s ease both;
+    }
+
+    .hero-btns { animation: fadeSlideDown 0.8s 0.4s ease both; }
+
+    /* Hero photo placeholder */
+    .hero-photo-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeSlideUp 0.9s 0.2s ease both;
+    }
+    .hero-photo-ring {
+      position: absolute;
+      width: 340px; height: 340px;
+      border: 2px dashed rgba(111, 66, 193, 0.3);
+      border-radius: 50%;
+      animation: spinSlow 18s linear infinite;
+    }
+    .hero-photo-ring-2 {
+      position: absolute;
+      width: 380px; height: 380px;
+      border: 1.5px solid rgba(111, 66, 193, 0.12);
+      border-radius: 50%;
+      animation: spinSlow 28s linear infinite reverse;
+    }
+    .hero-photo {
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-pale), #d9c8f8);
+      border: 5px solid #fff;
+      box-shadow: var(--shadow-card), 0 0 0 1px var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .hero-photo i { font-size: 4.5rem; color: var(--purple); opacity: 0.6; }
+    .hero-photo span {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--purple);
+      opacity: 0.7;
+      text-transform: uppercase;
+    }
+
+    /* Floating stat chips */
+    .hero-chip {
+      position: absolute;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 16px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      z-index: 2;
+      white-space: nowrap;
+    }
+    .hero-chip i { color: var(--purple); font-size: 1rem; }
+    .hero-chip-1 { bottom: 24px; left: -10px; animation: floatChip 3s ease-in-out infinite; }
+    .hero-chip-2 { top: 24px; right: -10px; animation: floatChip 3s 1.2s ease-in-out infinite; }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn-purple {
+      background: var(--purple);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 12px 28px;
+      border-radius: 12px;
+      border: 2px solid var(--purple);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(111, 66, 193, 0.28);
+    }
+    .btn-purple:hover {
+      background: var(--purple-dark);
+      border-color: var(--purple-dark);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(111, 66, 193, 0.38);
+    }
+    .btn-outline-purple {
+      background: transparent;
+      color: var(--purple);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 12px 28px;
+      border-radius: 12px;
+      border: 2px solid var(--purple);
+      transition: var(--transition);
+    }
+    .btn-outline-purple:hover {
+      background: var(--purple);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(111, 66, 193, 0.28);
+    }
+    .btn-sm-purple {
+      background: var(--purple);
+      color: #fff;
+      font-weight: 500;
+      font-size: 0.8rem;
+      padding: 7px 16px;
+      border-radius: 8px;
+      border: none;
+      transition: var(--transition);
+    }
+    .btn-sm-purple:hover {
+      background: var(--purple-dark);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .btn-sm-outline {
+      background: transparent;
+      color: var(--purple);
+      font-weight: 500;
+      font-size: 0.8rem;
+      padding: 7px 16px;
+      border-radius: 8px;
+      border: 1.5px solid var(--purple);
+      transition: var(--transition);
+    }
+    .btn-sm-outline:hover {
+      background: var(--purple);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    /* ============================================================
+       ABOUT SECTION
+    ============================================================ */
+    #about { background: #fff; }
+
+    .about-card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+    }
+    .about-stat {
+      text-align: center;
+      padding: 20px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: var(--transition);
+    }
+    .about-stat:hover { box-shadow: var(--shadow-card); transform: translateY(-3px); }
+    .about-stat .num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--purple);
+      line-height: 1;
+    }
+    .about-stat .lbl {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .about-text {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       SKILLS SECTION
+    ============================================================ */
+    #skills { background: var(--off-white); }
+
+    .skills-category-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 16px;
+    }
+    .skill-pill {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 18px;
+      transition: var(--transition);
+      cursor: default;
+    }
+    .skill-pill:hover {
+      border-color: var(--purple);
+      box-shadow: var(--shadow-card);
+      transform: translateX(4px);
+    }
+    .skill-pill i {
+      font-size: 1.4rem;
+      color: var(--purple);
+      flex-shrink: 0;
+    }
+    .skill-pill .skill-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+    .skill-pill .skill-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       PROJECTS SECTION
+    ============================================================ */
+    #projects { background: #fff; }
+
+    .project-card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: var(--transition);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-6px);
+      border-color: var(--purple-light);
+    }
+    .project-img {
+      height: 180px;
+      background: linear-gradient(135deg, var(--purple-pale), #e0d0fb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(111, 66, 193, 0.08) 100%);
+    }
+    .project-img i { font-size: 3.5rem; color: var(--purple); opacity: 0.4; }
+    .project-img .img-label {
+      position: absolute;
+      bottom: 10px; left: 50%; transform: translateX(-50%);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--purple);
+      opacity: 0.6;
+      text-transform: uppercase;
+      z-index: 1;
+    }
+    .project-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+    .project-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+    .tech-badge {
+      display: inline-block;
+      background: var(--purple-glass);
+      color: var(--purple);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin: 2px;
+      border: 1px solid rgba(111, 66, 193, 0.15);
+    }
+    .project-actions { margin-top: auto; padding-top: 16px; }
+
+    /* ============================================================
+       CONTACT SECTION
+    ============================================================ */
+    #contact { background: var(--off-white); }
+
+    .contact-info-card {
+      background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+      border-radius: 20px;
+      padding: 36px 32px;
+      color: #fff;
+      height: 100%;
+    }
+    .contact-info-card h4 {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+    .contact-info-card p { opacity: 0.85; font-size: 0.92rem; line-height: 1.7; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .contact-link:hover {
+      background: rgba(255, 255, 255, 0.22);
+      color: #fff;
+      transform: translateX(4px);
+    }
+    .contact-link i { font-size: 1.1rem; }
+
+    .contact-form-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+    }
+    .form-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+    .form-control {
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.88rem;
+      padding: 11px 14px;
+      color: var(--text-dark);
+      transition: var(--transition);
+    }
+    .form-control:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.12);
+    }
+    textarea.form-control { resize: vertical; min-height: 120px; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--text-dark);
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      padding: 24px 0;
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--purple-light); text-decoration: none; }
+    footer a:hover { color: #fff; }
+    footer .heart { color: #e87f7f; }
+
+    /* ============================================================
+       ANIMATIONS
+    ============================================================ */
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes floatChip {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50%       { transform: scale(1.5); opacity: 0.5; }
+    }
+
+    /* Scroll-reveal helper */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ============================================================
+       RESPONSIVE TWEAKS
+    ============================================================ */
+    @media (max-width: 991.98px) {
+      #hero { text-align: center; }
+      .hero-tagline { margin: 0 auto; }
+      .hero-btns { justify-content: center; }
+      .hero-chip-1, .hero-chip-2 { display: none; }
+      .hero-photo-wrap { margin-top: 40px; }
+    }
+    @media (max-width: 767.98px) {
+      .section-pad { padding: 64px 0; }
+      .hero-photo { width: 220px; height: 220px; }
+      .hero-photo-ring { width: 270px; height: 270px; }
+      .hero-photo-ring-2 { width: 310px; height: 310px; }
+      .contact-info-card, .contact-form-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="#hero">Areeba<span>.</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav gap-1">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <section id="hero">
+    <div class="container">
+      <div class="row align-items-center gy-5">
+
+        <!-- Left: Text -->
+        <div class="col-lg-6">
+          <div class="hero-badge">
+            <span class="dot"></span>
+            Available for Freelance Work
+          </div>
+
+          <h1 class="hero-name">
+            Hi, I'm <span class="highlight">Areeba<br>Sheikh</span>
+          </h1>
+
+          <p class="hero-title">
+            <i class="bi bi-code-slash me-2"></i>Frontend Developer &amp; Office Automation Expert
+          </p>
+
+          <p class="hero-tagline">
+            Building responsive websites &amp; professional documents — turning ideas into polished digital experiences.
+          </p>
+
+          <div class="hero-btns d-flex flex-wrap gap-3 mt-4">
+            <a href="#projects" class="btn btn-purple">
+              <i class="bi bi-grid-3x3-gap me-2"></i>View My Work
+            </a>
+            <a href="#contact" class="btn btn-outline-purple">
+              <i class="bi bi-envelope me-2"></i>Contact Me
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Photo Placeholder -->
+        <div class="col-lg-6">
+          <div class="hero-photo-wrap">
+            <div class="hero-photo-ring-2"></div>
+            <div class="hero-photo-ring"></div>
+            <div class="hero-photo">
+              <img src="image/my picture.jpeg" alt="my picture" style="width: 100%; height: 100%; object-fit:cover;">
+              <!-- <i class="bi bi-person"></i>
+              <span>your photo</span> -->
+            </div>
+
+            <!-- Floating stat chips -->
+            <div class="hero-chip hero-chip-1">
+              <i class="bi bi-laptop"></i>
+              Web Development
+            </div>
+            <div class="hero-chip hero-chip-2">
+              <i class="bi bi-file-earmark-spreadsheet"></i>
+              Office Automation
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT SECTION
+  ============================================================ -->
+  <section id="about" class="section-pad">
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-7 text-center">
+          <p class="section-label reveal">About Me</p>
+          <h2 class="section-title reveal">The Person Behind the <span>Code</span></h2>
+          <div class="divider mx-auto mt-3 reveal"></div>
+        </div>
+      </div>
+
+      <div class="row align-items-center gy-4">
+        <!-- Stats -->
+        <div class="col-lg-4">
+          <div class="row g-3">
+            <div class="col-6 reveal">
+              <div class="about-stat">
+                <div class="num">5+</div>
+                <div class="lbl">Projects Completed</div>
+              </div>
+            </div>
+            <div class="col-6 reveal">
+              <div class="about-stat">
+                <div class="num">7+</div>
+                <div class="lbl">Skills Mastered</div>
+              </div>
+            </div>
+            <div class="col-6 reveal">
+              <div class="about-stat">
+                <div class="num">2+</div>
+                <div class="lbl">Years Learning</div>
+              </div>
+            </div>
+            <div class="col-6 reveal">
+              <div class="about-stat">
+                <div class="num">100%</div>
+                <div class="lbl">Passion</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="col-lg-8 reveal">
+          <div class="about-card">
+            <p class="section-label mb-2">My Story</p>
+            <h3 class="section-title mb-3" style="font-size:1.6rem;">
+              Passionate Developer &amp; <span>Automation Specialist</span>
+            </h3>
+            <p class="about-text mb-3">
+              I'm <strong>Areeba Sheikh</strong>, a dedicated Frontend Developer and Office Automation Expert with a strong passion for creating clean, responsive web interfaces and efficient professional documents. I specialise in building user-friendly websites using HTML5, CSS3, JavaScript, and Bootstrap 5, and I bring the same level of precision to productivity tools like MS Word, Excel, and PowerPoint.
+            </p>
+            <p class="about-text mb-4">
+              Whether it's crafting a pixel-perfect landing page, designing an interactive quiz, building an Excel dashboard with dynamic charts, or structuring a compelling company profile in PowerPoint — I bring creativity, technical skill, and attention to detail to everything I build.
+            </p>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="tech-badge"><i class="bi bi-geo-alt me-1"></i>Pakistan</span>
+              <span class="tech-badge"><i class="bi bi-mortarboard me-1"></i>Frontend Developer</span>
+              <span class="tech-badge"><i class="bi bi-file-earmark-check me-1"></i>Office Expert</span>
+              <span class="tech-badge"><i class="bi bi-translate me-1"></i>English / Urdu</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SKILLS SECTION
+  ============================================================ -->
+  <section id="skills" class="section-pad">
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-7 text-center">
+          <p class="section-label reveal">My Toolkit</p>
+          <h2 class="section-title reveal">Skills &amp; <span>Technologies</span></h2>
+          <div class="divider mx-auto mt-3 reveal"></div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- Column 1: Web Development -->
+        <div class="col-lg-6 reveal">
+          <p class="skills-category-title"><i class="bi bi-code-slash me-2"></i>Web Development</p>
+          <div class="d-flex flex-column gap-3">
+
+            <div class="skill-pill">
+              <i class="bi bi-filetype-html"></i>
+              <div>
+                <div class="skill-name">HTML5</div>
+                <div class="skill-desc">Semantic markup, accessibility, modern structure</div>
+              </div>
+            </div>
+
+            <div class="skill-pill">
+              <i class="bi bi-filetype-css"></i>
+              <div>
+                <div class="skill-name">CSS3</div>
+                <div class="skill-desc">Flexbox, Grid, animations, responsive design</div>
+              </div>
+            </div>
+
+            <div class="skill-pill">
+              <i class="bi bi-filetype-js"></i>
+              <div>
+                <div class="skill-name">JavaScript</div>
+                <div class="skill-desc">DOM manipulation, events, interactive UIs</div>
+              </div>
+            </div>
+
+            <div class="skill-pill">
+              <i class="bi bi-bootstrap"></i>
+              <div>
+                <div class="skill-name">Bootstrap 5</div>
+                <div class="skill-desc">Responsive grid, components, utilities</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Column 2: Office Tools -->
+        <div class="col-lg-6 reveal">
+          <p class="skills-category-title"><i class="bi bi-microsoft me-2"></i>Office Tools</p>
+          <div class="d-flex flex-column gap-3">
+
+            <div class="skill-pill">
+              <i class="bi bi-file-earmark-word"></i>
+              <div>
+                <div class="skill-name">MS Word</div>
+                <div class="skill-desc">Reports, templates, mail merge, formatting</div>
+              </div>
+            </div>
+
+            <div class="skill-pill">
+              <i class="bi bi-file-earmark-spreadsheet"></i>
+              <div>
+                <div class="skill-name">MS Excel</div>
+                <div class="skill-desc">Formulas, pivot tables, charts, dashboards</div>
+              </div>
+            </div>
+
+            <div class="skill-pill">
+              <i class="bi bi-file-earmark-slides"></i>
+              <div>
+                <div class="skill-name">MS PowerPoint</div>
+                <div class="skill-desc">Presentations, slide design, animations</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROJECTS SECTION
+  ============================================================ -->
+  <section id="projects" class="section-pad">
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-7 text-center">
+          <p class="section-label reveal">Portfolio</p>
+          <h2 class="section-title reveal">Featured <span>Projects</span></h2>
+          <div class="divider mx-auto mt-3 reveal"></div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- Project 1 -->
+        <div class="col-md-6 col-xl-3 reveal">
+          <div class="project-card">
+            <div class="project-img">
+              <i class="bi bi-person-vcard"></i>
+              <span class="img-label">Project Preview</span>
+            </div>
+            <div class="project-body">
+              <h5 class="project-title">Personal Portfolio Website</h5>
+              <div class="mb-3">
+                <span class="tech-badge">HTML</span>
+                <span class="tech-badge">CSS</span>
+                <span class="tech-badge">Bootstrap</span>
+              </div>
+              <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.6;">A responsive single-page portfolio to showcase work and skills.</p>
+              <div class="project-actions d-flex gap-2 flex-wrap">
+                <a href="#" class="btn btn-sm-purple"><i class="bi bi-eye me-1"></i>Live Demo</a>
+                <a href="#" class="btn btn-sm-outline"><i class="bi bi-github me-1"></i>GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="col-md-6 col-xl-3 reveal">
+          <div class="project-card">
+            <div class="project-img">
+              <i class="bi bi-patch-question"></i>
+              <span class="img-label">Project Preview</span>
+            </div>
+            <div class="project-body">
+              <h5 class="project-title">Interactive Quiz App</h5>
+              <div class="mb-3">
+                <span class="tech-badge">HTML</span>
+                <span class="tech-badge">CSS</span>
+                <span class="tech-badge">JavaScript</span>
+              </div>
+              <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.6;">A dynamic quiz with scoring, timers, and instant feedback.</p>
+              <div class="project-actions d-flex gap-2 flex-wrap">
+                <a href="#" class="btn btn-sm-purple"><i class="bi bi-eye me-1"></i>Live Demo</a>
+                <a href="#" class="btn btn-sm-outline"><i class="bi bi-github me-1"></i>GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="col-md-6 col-xl-3 reveal">
+          <div class="project-card">
+            <div class="project-img">
+              <i class="bi bi-bar-chart-line"></i>
+              <span class="img-label">Project Preview</span>
+            </div>
+            <div class="project-body">
+              <h5 class="project-title">Sales Dashboard</h5>
+              <div class="mb-3">
+                <span class="tech-badge">MS Excel</span>
+                <span class="tech-badge">Charts</span>
+              </div>
+              <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.6;">An Excel dashboard with pivot tables, KPIs, and dynamic charts.</p>
+              <div class="project-actions d-flex gap-2 flex-wrap">
+                <a href="#" class="btn btn-sm-purple"><i class="bi bi-eye me-1"></i>Live Demo</a>
+                <a href="#" class="btn btn-sm-outline"><i class="bi bi-github me-1"></i>GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="col-md-6 col-xl-3 reveal">
+          <div class="project-card">
+            <div class="project-img">
+              <i class="bi bi-building"></i>
+              <span class="img-label">Project Preview</span>
+            </div>
+            <div class="project-body">
+              <h5 class="project-title">Company Profile</h5>
+              <div class="mb-3">
+                <span class="tech-badge">MS PowerPoint</span>
+              </div>
+              <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.6;">A professionally designed company profile presentation deck.</p>
+              <div class="project-actions d-flex gap-2 flex-wrap">
+                <a href="#" class="btn btn-sm-purple"><i class="bi bi-eye me-1"></i>Live Demo</a>
+                <a href="#" class="btn btn-sm-outline"><i class="bi bi-github me-1"></i>GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT SECTION
+  ============================================================ -->
+  <section id="contact" class="section-pad">
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-7 text-center">
+          <p class="section-label reveal">Get In Touch</p>
+          <h2 class="section-title reveal">Let's <span>Work Together</span></h2>
+          <div class="divider mx-auto mt-3 reveal"></div>
+        </div>
+      </div>
+
+      <div class="row g-4 align-items-stretch">
+
+        <!-- Contact Info Card -->
+        <div class="col-lg-4 reveal">
+          <div class="contact-info-card">
+            <h4>Say Hello 👋</h4>
+            <p class="mb-4">I'm always open to new projects, collaborations, or just a friendly chat about tech.</p>
+
+            <div class="d-flex flex-column gap-3">
+              <a href="mailto:areeba@email.com" class="contact-link">
+                <i class="bi bi-envelope-fill"></i>
+                areeba@email.com
+              </a>
+              <a href="https://linkedin.com" target="_blank" class="contact-link">
+                <i class="bi bi-linkedin"></i>
+                linkedin.com/in/areeba
+              </a>
+              <a href="https://github.com" target="_blank" class="contact-link">
+                <i class="bi bi-github"></i>
+                github.com/areeba
+              </a>
+            </div>
+
+            <!-- Social quick links -->
+            <div class="d-flex gap-3 mt-4 pt-3" style="border-top:1px solid rgba(255,255,255,0.18);">
+              <a href="#" style="color:rgba(255,255,255,0.7);font-size:1.3rem;transition:var(--transition);" class="hover-white">
+                <i class="bi bi-envelope-fill"></i>
+              </a>
+              <a href="#" style="color:rgba(255,255,255,0.7);font-size:1.3rem;transition:var(--transition);">
+                <i class="bi bi-linkedin"></i>
+              </a>
+              <a href="#" style="color:rgba(255,255,255,0.7);font-size:1.3rem;transition:var(--transition);">
+                <i class="bi bi-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col-lg-8 reveal">
+          <div class="contact-form-card">
+            <h5 style="font-weight:700;margin-bottom:20px;color:var(--text-dark);">Send a Message</h5>
+            <div class="row g-3">
+
+              <div class="col-md-6">
+                <label class="form-label">Your Name</label>
+                <input type="text" class="form-control" placeholder="John Doe" />
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control" placeholder="john@example.com" />
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Subject</label>
+                <input type="text" class="form-control" placeholder="Project Inquiry" />
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Message</label>
+                <textarea class="form-control" placeholder="Tell me about your project..."></textarea>
+              </div>
+
+              <div class="col-12">
+                <button type="button" class="btn btn-purple w-100">
+                  <i class="bi bi-send me-2"></i>Send Message
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="container">
+      <p>
+        Copyright &copy; 2026 <a href="#hero">Areeba Sheikh</a> — Built with <span class="heart">♥</span> using Bootstrap 5
+      </p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       Bootstrap 5 JS Bundle (includes Popper)
+  ============================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- ============================================================
+       CUSTOM JAVASCRIPT
+  ============================================================ -->
+  <script>
+    /* ── Navbar: add 'scrolled' class on scroll ──────────────── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    /* ── Scroll Reveal ───────────────────────────────────────── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // Stagger sibling reveals in same parent
+          const siblings = entry.target.parentElement.querySelectorAll('.reveal:not(.visible)');
+          let delay = 0;
+          siblings.forEach(sib => {
+            sib.style.transitionDelay = delay + 'ms';
+            sib.classList.add('visible');
+            delay += 80;
+          });
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    /* ── Active nav link on scroll ──────────────────────────── */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    });
+
+    /* ── Close mobile nav on link click ─────────────────────── */
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const collapse = document.getElementById('navMenu');
+        if (collapse.classList.contains('show')) {
+          bootstrap.Collapse.getInstance(collapse)?.hide();
+        }
+      });
+    });
+
+    /* ── Contact form: simple feedback ──────────────────────── */
+    const sendBtn = document.querySelector('#contact button[type="button"]');
+    sendBtn.addEventListener('click', () => {
+      const inputs = document.querySelectorAll('#contact .form-control');
+      let allFilled = true;
+      inputs.forEach(inp => { if (!inp.value.trim()) allFilled = false; });
+      if (!allFilled) {
+        sendBtn.textContent = '⚠️  Please fill all fields';
+        sendBtn.style.background = '#e87f7f';
+        setTimeout(() => {
+          sendBtn.innerHTML = '<i class="bi bi-send me-2"></i>Send Message';
+          sendBtn.style.background = '';
+        }, 2500);
+      } else {
+        sendBtn.innerHTML = '<i class="bi bi-check2-circle me-2"></i>Message Sent!';
+        sendBtn.style.background = '#27ae60';
+        inputs.forEach(inp => inp.value = '');
+        setTimeout(() => {
+          sendBtn.innerHTML = '<i class="bi bi-send me-2"></i>Send Message';
+          sendBtn.style.background = '';
+        }, 3000);
+      }
+    });
+  </script>
+
+</body>
+</html>
